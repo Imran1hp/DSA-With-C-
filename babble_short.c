@@ -15,6 +15,9 @@ a[j+1]=t;}
    }
 }
 
+// bubble sort method 2 
+
+
 void b1sort (int a[],int n){
 
 int i,j,t,f;
@@ -51,7 +54,7 @@ int main (){
     for (i=0;i<n;i++){
         printf(" %d ",a[i]);
     }
-    b1sort(a,n);
+    bsort(a,n);
     printf("After sorting\n");
     for (i=0;i<n;i++){
         printf("%d ",a[i]);
