@@ -25,6 +25,7 @@ for (i=0; i<n-1; i++){
  f = 0;
 for (j=0 ; j <n-i-1; j++){
    if (a[j] > a[j+1]){
+    printf("\ncheck %d and %d\n",a[j],a[j+1]);
       f =1;
       t = a[j];
       a[j] = a[j+1];
@@ -37,8 +38,6 @@ for (j=0 ; j <n-i-1; j++){
            } 
    }
  }
-
-
 
 int main (){
 
