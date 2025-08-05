@@ -1,54 +1,43 @@
 #include <stdio.h>
 
-void binary_search(int a[],int n,int item){
+void binary_search(int a[], int n, int item) {
+    int min = 0, max = n - 1, mid;
+    int found = 0;
 
-int min,max,mid,i,f=0;
+    while (min <= max) {
+        mid = (min + max) / 2;
 
-min =0;
-max =n-1;
-while (max>=min){
+        if (a[mid] == item) {
+            found = 1;
+            printf("Element found atz position %d\n", mid + 1);  // Position (1-based)
+            break;
+        } else if (a[mid] < item) {
+            min = mid + 1;
+        } else {
+            max = mid - 1;
+        }
+    }
 
-mid = (min+max)/2;
-
-if (a[mid]==item){
- f=1;
- break;
-}
-if (a[mid]<item){
-min = mid+1;
-}
-if (a[mid]>item){
-max = mid-1;}
-    
-
-if (f==1){
-printf("Element found at position %d",mid+1);
-break;
-}
-if (f==0){
-printf("Element not found");
-break;
+    if (!found) {
+        printf("Element not found\n");
+    }
 }
 
-}
-}
+int main() {
+    int a[100], n, i, item;
 
-int main(){
+    printf("Enter number of elements: ");
+    scanf("%d", &n);
 
-int a[10],i,n,item;
+    printf("Enter elements in **sorted order**: ");
+    for (i = 0; i < n; i++) {
+        scanf("%d", &a[i]);
+    }
 
-printf("Enter the number of elements: ");
-scanf("%d",&n);
+    printf("Enter element to search: ");
+    scanf("%d", &item);
 
-printf("Enter the elements: ");
-for(i=0;i<n;i++){
-scanf("%d",&a[i]);
-}
+    binary_search(a, n, item);
 
-printf("Enter the element to be searched: ");
-scanf("%d",&item);
-
-binary_search(a,n,item);
-
-return 0;
+    return 0;
 }
