@@ -1,17 +1,18 @@
 #include <stdio.h>
 
-int binary_search(int a[],int n,int item){
+void binary_search(int a[],int n,int item){
 
-int min,max,mid,i;
+int min,max,mid,i,f=0;
 
 min =0;
 max =n-1;
 while (max>=min){
 
 mid = (min+max)/2;
-for (i=0;i<n;i++){
+
 if (a[mid]==item){
-return mid;
+ f=1;
+ break;
 }
 if (a[mid]<item){
 min = mid+1;
@@ -19,18 +20,18 @@ min = mid+1;
 if (a[mid]>item){
 max = mid-1;}
     
+
+if (f==1){
+printf("Element found at position %d",mid+1);
+break;
+}
+if (f==0){
+printf("Element not found");
+break;
 }
 
-
-
 }
-
-
-
-
-
 }
-
 
 int main(){
 
