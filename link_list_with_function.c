@@ -1,22 +1,25 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-struct node{
+struct node
+{
+
 int data ;
 struct node * next ;
 
 };
 
 
-int count_length(struct node *head){
+int count_length(struct node *head)
+{
+
  struct node * temp ;
  int count =0 ;
  temp = head ;
   while(temp!=NULL){
+    temp = temp->next;
     count++;
   }
-
-
 return count ;
 
 }
@@ -25,7 +28,6 @@ return count ;
 
 
 struct node *insert_begining(struct node *head)
-
 {
 
 struct node * newnode , *temp ;
@@ -34,14 +36,14 @@ newnode = (struct node *)malloc(sizeof(struct node));
 printf("Enter th value of the node: ");
 scanf("%d",&newnode->data);
 
-if(head == NULL){
-
+if(head == NULL)
+{
 head = newnode;
 newnode-> next =NULL; 
-
 }
-else{
 
+else
+{
 newnode-> next = head;
 head = newnode;
 } 
@@ -61,7 +63,7 @@ struct node *newnode, *temp;
 
 newnode = (struct node *)malloc(sizeof(struct node));
 printf("Enter the value of the node: ");
-scnaf("%d",newnode->data);
+scanf("%d",&newnode->data);
 newnode->next = NULL;
 
 if( head == NULL){
@@ -104,8 +106,8 @@ struct node * insert_given_loc(struct node *head)
         temp  = temp->next;
         i++;
     }
-    print("Enter the value of the node: ");
-    scanf("%d ",&newnode->data);
+    printf("Enter the value of the node: ");
+    scanf("%d",&newnode->data);
 
     newnode->next =temp->next;
     temp->next = newnode;
@@ -118,7 +120,7 @@ struct node * insert_given_loc(struct node *head)
 
 
 
-void display(struct node *head)
+struct node * display(struct node *head)
 {
 struct node *search = head;
 
@@ -132,7 +134,6 @@ printf("%d \t", search->data);
 search = search->next;
 }
 printf("\n");
-
 
 }
 
@@ -156,13 +157,20 @@ printf("\n Enter your choice: ");
 scanf("%d",&choice);
 
 switch(choice){
-case 2 :
 
+case 1:
+ head = insert_begining(head);
+break; 
+
+case 2 :
 head = insert_end(head);
 break;
 
-case 4:
+case 3:
+head= insert_given_loc(head);
+break;
 
+case 4:
 display(head);
 break;
 
@@ -170,10 +178,7 @@ case 5:
 exit(1);
 }
 
-
 }
-
-
 
 
 
