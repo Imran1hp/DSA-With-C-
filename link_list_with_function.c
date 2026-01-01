@@ -8,6 +8,22 @@ struct node * next ;
 };
 
 
+int count_length(struct node *head){
+ struct node * temp ;
+ int count =0 ;
+ temp = head ;
+  while(temp!=NULL){
+    count++;
+  }
+
+
+return count ;
+
+}
+
+
+
+
 struct node *insert_begining(struct node *head)
 
 {
@@ -60,20 +76,49 @@ while ( temp->next != NULL){
 temp->next = newnode;
 
 }
-
-
-
-
-
-
 return head;
 }
 
 
+struct node * insert_given_loc(struct node *head)
+      
+{
+  int position , i = 1;
+  struct node *newnode , *temp ;
+
+  newnode = (struct node *)malloc(sizeof(struct node));
+  printf("Enter the position where node is inserted: ");
+  scanf("%d" ,&position);
+  int length = count_length(head);
+
+  if (length < position){
+     
+    printf("Invalit postion");
+
+  }
+  else
+  {
+    temp = head;
+    while( i< position)
+    {
+        temp  = temp->next;
+        i++;
+    }
+    print("Enter the value of the node: ");
+    scanf("%d ",&newnode->data);
+
+    newnode->next =temp->next;
+    temp->next = newnode;
+
+  }
+
+  return head ;
+         }
 
 
 
-struct node * display(struct node *head)
+
+void display(struct node *head)
 {
 struct node *search = head;
 
@@ -88,7 +133,7 @@ search = search->next;
 }
 printf("\n");
 
-return head;
+
 }
 
 
