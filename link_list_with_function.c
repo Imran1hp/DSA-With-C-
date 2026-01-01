@@ -8,32 +8,59 @@ struct node{
 };
 
 
+struct node *insert_begining(struct node *head)
+
+{
+
+struct node * newnode , *temp ;
+
+newnode = (struct node *)malloc(sizeof(struct node));
+ printf("Enter th value of the node: ");
+ scanf("%d",&newnode->data);
+ 
+if(head == NULL){
+
+ head = newnode;
+ newnode-> next =NULL; 
+
+}
+else{
+
+    newnode-> next = head;
+    head = newnode;
+ } 
+
+ return head;
+
+   }
+
+
+
+
+
+
 struct node * insert_end(struct node * head)
 {
     struct node *newnode, *temp;
 
     newnode = (struct node *)malloc(sizeof(struct node));
-    if (newnode == NULL) {
-        printf("Memory allocation failed\n");
-        return head;
-    }
-
     printf("Enter the value of the node: ");
-    scanf("%d", &newnode->data);
+    scnaf("%d",newnode->data);
     newnode->next = NULL;
 
-    if (head == NULL) {
-        head = newnode;
-    } else {
-        temp = head;
-        while (temp->next != NULL) {
-            temp = temp->next;
-        }
-        temp->next = newnode;
-    }
+    
+    
+
+
+
 
     return head;
 }
+
+
+
+
+
 struct node * display(struct node *head)
 {
     struct node *search = head;
