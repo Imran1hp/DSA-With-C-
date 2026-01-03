@@ -81,8 +81,9 @@ temp->next = newnode;
 return head;
 }
 
-// insert at any given localtion
 
+
+// insert at any given localtion
 
 struct node * insert_given_loc(struct node *head)
       
@@ -119,32 +120,83 @@ struct node * insert_given_loc(struct node *head)
   return head ;
          }
 
+
+
 //  Delete a node from begining
 
 struct node *delete_begining(struct node *head){
  
  struct node * temp ;
 
- if( head->next == NULL){
- head = NULL;
+ if( head == NULL){
+ printf("List is already empty\n");
+
 }
-
 else{
-
 temp = head ;
 temp = head->next;
 head = temp ;
-
+printf("Delete from the Begining");
 }
-
 return head ;
 }
 
+// Detele from the end 
+
+
+struct node * delete_end(struct node *head)
+{
+struct node *temp , *pre_node;
+
+if (head->next == NULL){
+  free(head);
+  return NULL;
+ 
+}
+else{
+  temp = pre_node = head;
+  while (temp->next != NULL){
+    pre_node = temp ;
+    temp = temp->next;
+  }
+  pre_node->next = NULL;
+  free(temp);
+  printf("Delete from the End");
+}
+  return head ;
+}
+
+
+// Delete from any given location 
+
+struct node *delete_given_loc(struct node*head)
+{
+
+struct node *temp ;
+int pos, i=1;
+
+
+printf("Enter the position to be Deleted: ");
+scanf("%d",&pos);
+int lenght = count_lenght(head);
+if(lenght < pos){
+  printf("Invailed Position");
+
+}
+else{
+  temp =head;
+  while(i<pos){
+   temp = temp ->next;
+   i++;
+  }
+ 
+
+}
 
 
 
-
-
+  return  head ;
+}
 
 
 
@@ -185,6 +237,7 @@ printf("\n1 for  insert at the  beining ");
 printf("\n2 for  insert at the  end ");
 printf("\n3 for  insert at given location ");
 printf("\n4 for delete from begining");
+printf("\n5 for delete from end");
 printf("\n7 for Dispaly");
 printf("\n8 for Exit");
 
@@ -208,6 +261,11 @@ break;
 case 4:
 head= delete_begining(head);
 break;
+
+case 5:
+head = delete_end(head);
+break;
+
 case 7:
 display(head);
 break;
