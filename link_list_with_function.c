@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-
+// struct node
 struct node
 {
 
@@ -8,7 +8,7 @@ int data ;
 struct node * next ;
 
 };
-
+//  count the length of a array
 
 int count_length(struct node *head)
 {
@@ -25,7 +25,7 @@ return count ;
 }
 
 
-
+//  inser at begining
 
 struct node *insert_begining(struct node *head)
 {
@@ -55,7 +55,7 @@ return head;
 
 
 
-
+//  insert at the end
 
 struct node * insert_end(struct node * head)
 {
@@ -80,6 +80,8 @@ temp->next = newnode;
 }
 return head;
 }
+
+// insert at any given localtion
 
 
 struct node * insert_given_loc(struct node *head)
@@ -117,8 +119,40 @@ struct node * insert_given_loc(struct node *head)
   return head ;
          }
 
+//  Delete a node from begining
+
+struct node *delete_begining(struct node *head){
+ 
+ struct node * temp ;
+
+ if( head->next == NULL){
+ head = NULL;
+}
+
+else{
+
+temp = head ;
+temp = head->next;
+head = temp ;
+
+}
+
+return head ;
+}
 
 
+
+
+
+
+
+
+
+
+
+
+
+// Dislay the Linked list
 
 struct node * display(struct node *head)
 {
@@ -150,8 +184,9 @@ int choice ;
 printf("\n1 for  insert at the  beining ");
 printf("\n2 for  insert at the  end ");
 printf("\n3 for  insert at given location ");
-printf("\n4 for Dispaly");
-printf("\n5 for Exit");
+printf("\n4 for delete from begining");
+printf("\n7 for Dispaly");
+printf("\n8 for Exit");
 
 printf("\n Enter your choice: ");
 scanf("%d",&choice);
@@ -171,10 +206,13 @@ head= insert_given_loc(head);
 break;
 
 case 4:
+head= delete_begining(head);
+break;
+case 7:
 display(head);
 break;
 
-case 5:
+case 8:
 exit(1);
 }
 
