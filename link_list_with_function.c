@@ -8,7 +8,7 @@ int data ;
 struct node * next ;
 
 };
-//  count the length of a array
+//  count the length of the list
 
 int count_length(struct node *head)
 {
@@ -172,24 +172,34 @@ else{
 struct node *delete_given_loc(struct node*head)
 {
 
-struct node *temp ;
+struct node *temp ,*pre_node;
 int pos, i=1;
 
 
 printf("Enter the position to be Deleted: ");
 scanf("%d",&pos);
-int lenght = count_lenght(head);
+int lenght = count_length(head);
 if(lenght < pos){
   printf("Invailed Position");
 
 }
 else{
-  temp =head;
-  while(i<pos){
-   temp = temp ->next;
-   i++;
+   if(i == pos){
+    head=head->next;
+    printf("Deleted the Frist node");
+   }
+   else{
+    temp =head;
+    while(i<pos){
+      pre_node =temp;
+    temp = temp ->next;
+    i++;
   }
- 
+   pre_node->next =temp->next;
+   free(temp);
+   printf("Delete from the prosition %d",i);
+
+}
 
 }
 
@@ -238,6 +248,7 @@ printf("\n2 for  insert at the  end ");
 printf("\n3 for  insert at given location ");
 printf("\n4 for delete from begining");
 printf("\n5 for delete from end");
+printf("\n6 for delete from given position");
 printf("\n7 for Dispaly");
 printf("\n8 for Exit");
 
@@ -264,6 +275,9 @@ break;
 
 case 5:
 head = delete_end(head);
+break;
+case 6:
+head = delete_given_loc(head);
 break;
 
 case 7:
