@@ -250,7 +250,8 @@ printf("\n4 for delete from begining");
 printf("\n5 for delete from end");
 printf("\n6 for delete from given position");
 printf("\n7 for Dispaly");
-printf("\n8 for Exit");
+printf("\n8 for print the lenth of the linked list ");
+printf("\n9 for exit"  );
 
 printf("\n Enter your choice: ");
 scanf("%d",&choice);
@@ -285,6 +286,11 @@ display(head);
 break;
 
 case 8:
+int len = count_length(head);
+printf("Length of the list is %d" , len);
+break;
+
+case 9:
 exit(1);
 }
 
