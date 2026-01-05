@@ -9,10 +9,10 @@ struct node{
 };
 
 
-
+// Insert at the End 
 struct node *insert_end(struct node *head){
 
-  struct node *temp ,*newnode ; 
+  struct node *tail ,*newnode ; 
   
   newnode = (struct node*) malloc(sizeof(struct node));
   printf("Enter the value: ");
@@ -20,14 +20,14 @@ struct node *insert_end(struct node *head){
   newnode->pre = NULL;
   newnode->next = NULL;
   if(head == NULL){
-    head = temp = newnode;
+    head = tail = newnode;
   }
  else{
    
-    temp->next = newnode ;
-    newnode ->pre = temp;
+    tail->next = newnode ;
+    newnode ->pre = tail;
     newnode -> next = NULL;
-    temp = newnode;
+    tail = newnode;
  }
 
   if( head == NULL){
@@ -35,8 +35,11 @@ struct node *insert_end(struct node *head){
     return head ;
 }
 
-void display(struct node *head ){
 
+
+
+// Display function
+void display(struct node *head ){
 
  struct node * temp;
 if(head==NULL){
