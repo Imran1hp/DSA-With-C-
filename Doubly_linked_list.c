@@ -7,10 +7,14 @@ struct node{
   struct node *pre;
   struct node *next;
 };
+
+struct node *head =NULL,*tail = NULL;
+
+
 //  Insert at the begining
 
-struct node *insert_begining(struct node *head){
- struct node *tail , *newnode ;
+void *insert_begining(){
+ struct node *newnode ;
 
  newnode = (struct node*)malloc(sizeof(struct node));
  printf("Enter the value: ");
@@ -29,27 +33,14 @@ struct node *insert_begining(struct node *head){
   head = newnode;
  }
 
-  return head;
 }
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
 // Insert at the End 
-struct node *insert_end(struct node *head){
+void insert_end(){
 
-  struct node *tail ,*newnode ; 
+  struct node *newnode ; 
   
   newnode = (struct node*) malloc(sizeof(struct node));
   printf("Enter the value: ");
@@ -69,7 +60,7 @@ struct node *insert_end(struct node *head){
 
   if( head == NULL){
   }
-    return head ;
+ 
 }
 
 
@@ -104,8 +95,6 @@ else{
 
 
 int main(){
-struct node *head;
-head = NULL ;
 
 while(1){
 int choice ;
@@ -126,11 +115,11 @@ scanf("%d",&choice);
 switch(choice){
 
 case 1:
-  head = insert_begining(head);
+  insert_begining();
 break; 
 
 case 2 :
-head = insert_end(head);
+insert_end();
 break;
 
 case 3:
