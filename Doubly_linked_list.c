@@ -116,6 +116,9 @@ else{
 
 }
 }
+
+//  Detele at the begining 
+
 void delete_begining(){
 struct node *temp;
 if (head == NULL){
@@ -134,16 +137,37 @@ else{
   head->pre = NULL;
   free(temp);
   }
-
-
-
+printf("Delete from the begining");
+}
 
 }
 
 
+// Delete from the end
+void delete_end(){
+
+  struct node *temp;
+if(head == NULL){
+
+  printf("List is empty");
+}
+else{
+ if(tail->pre ==NULL){
+
+  free(tail);
+  return ;
+}
+else{
+  temp = tail;
+  tail = tail->pre;
+  tail->next = NULL;
+  free(temp);
+  
+}
+printf("Delete from the end");
 
 
-
+}
 }
 
 
@@ -167,6 +191,7 @@ else{
     while(temp!=NULL){
     printf("%d \t", temp->data);
     temp = temp->next;
+    head=NULL;
     }
     printf("\n");
 
@@ -216,7 +241,7 @@ case 4:
 break;
 
 case 5:
-// head = delete_end(head);
+ delete_end();
 break;
 case 6:
 // head = delete_given_loc(head);
