@@ -166,10 +166,43 @@ else{
 }
 printf("Delete from the end");
 
-
 }
 }
+//  delete at any postion 
 
+void delete_given_loc()
+{
+
+  struct node *temp;
+  int len = count_length(head);
+  int i = 1 , pos;
+  printf("Enter the position: ");
+  scanf("%d" , &pos);
+  if(pos >len || pos <1){
+
+
+    printf("Invalit position");
+    return;
+  }
+  else{
+    if(pos ==1){
+      delete_begining();
+    }
+    else if(pos == len){
+      delete_end();
+    }
+    else{
+      temp =head;
+      while(i <pos){
+        temp = temp->next;
+        i++;
+      }
+      temp->pre->next = temp->next;
+      temp->next->pre = temp->pre;
+      free(temp);
+    }
+  }
+}
 
 
 
@@ -244,7 +277,7 @@ case 5:
  delete_end();
 break;
 case 6:
-// head = delete_given_loc(head);
+delete_given_loc(head);
 break;
 
 case 7:
