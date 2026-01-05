@@ -10,6 +10,19 @@ struct node{
 
 struct node *head =NULL,*tail = NULL;
 
+// count the length
+int count_length(struct node *head ){
+struct node *temp;
+int count = 0;
+temp = head ;
+while(temp!=NULL){
+ temp = temp->next;
+ count++;
+
+}
+return count;
+}
+
 
 //  Insert at the begining
 
@@ -62,6 +75,51 @@ void insert_end(){
   }
  
 }
+
+//  insert at given location 
+
+void insert_given_loc (){
+struct node * temp , *newnode ;
+int len = count_length(head);
+int i = 1 , pos;
+printf("Enter the position: ");
+scanf("%d" , &pos);
+if( pos>len+1 || pos <1 ){
+ printf("Invail position ");
+ return ;
+}
+
+else{
+  if(pos == 1){
+
+    insert_begining();
+
+  }
+  else if(pos =len+1){
+    insert_end();
+
+  }
+  else{
+    temp =head;
+    while(i<pos-1){
+      temp = temp->next;
+      i++;
+    }
+  newnode = (struct node *)malloc(sizeof(struct node));
+  printf("Enter the value: ");
+  scanf("%d" ,&newnode->data);
+  newnode->pre = temp;
+  newnode->next = temp->next;
+  temp->next = newnode;
+  newnode ->next->pre = newnode;
+  }
+
+}
+
+
+}
+
+
 
 
 
@@ -123,7 +181,7 @@ insert_end();
 break;
 
 case 3:
-// head= insert_given_loc(head);
+insert_given_loc(head);
 break;
 
 case 4:
