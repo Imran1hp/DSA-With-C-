@@ -115,6 +115,33 @@ else{
   }
 
 }
+}
+void delete_begining(){
+struct node *temp;
+if (head == NULL){
+
+  printf("List is empty");
+  return ;
+}
+else{
+  if(head == tail){
+    free(head);
+    head = NULL;
+  }
+  else{
+  temp=head;
+  head = head->next;
+  head->pre = NULL;
+  free(temp);
+  }
+
+
+
+
+}
+
+
+
 
 
 }
@@ -181,11 +208,11 @@ insert_end();
 break;
 
 case 3:
-insert_given_loc(head);
+insert_given_loc();
 break;
 
 case 4:
-// head= delete_begining(head);
+ delete_begining();
 break;
 
 case 5:
@@ -201,8 +228,8 @@ break;
 
 case 8:
 
-// int len = count_length(head);
-// printf("Length of the list is %d" , len);
+int len = count_length(head);
+printf("Length of the list is %d" , len);
 break;
 
 case 9:
