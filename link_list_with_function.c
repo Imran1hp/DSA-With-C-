@@ -84,41 +84,41 @@ return head;
 
 
 // insert at any given localtion
-
 struct node * insert_given_loc(struct node *head)
-      
 {
-  int position , i = 1;
-  struct node *newnode , *temp ;
+    int position, i = 1;
+    struct node *newnode, *temp;
 
-  newnode = (struct node *)malloc(sizeof(struct node));
-  printf("Enter the position where node is inserted: ");
-  scanf("%d" ,&position);
-  int length = count_length(head);
+    printf("Enter the position where node is inserted: ");
+    scanf("%d", &position);
 
-  if (length < position){
-     
-    printf("Invalit postion");
+    int length = count_length(head);
+    if (position < 1 || position > length + 1){
+        printf("Invalid position\n");
+        return head;
+    }
 
-  }
-  else
-  {
+    newnode = (struct node *)malloc(sizeof(struct node));
+    printf("Enter the value of the node: ");
+    scanf("%d", &newnode->data);
+
+    if (position == 1){
+        newnode->next = head;
+        head = newnode;
+        return head;
+    }
+
     temp = head;
-    while( i< position)
-    {
-        temp  = temp->next;
+    while (i < position - 1){
+        temp = temp->next;
         i++;
     }
-    printf("Enter the value of the node: ");
-    scanf("%d",&newnode->data);
 
-    newnode->next =temp->next;
+    newnode->next = temp->next;
     temp->next = newnode;
 
-  }
-
-  return head ;
-         }
+    return head;
+}
 
 
 
@@ -136,6 +136,7 @@ else{
 temp = head ;
 temp = head->next;
 head = temp ;
+free(temp);
 printf("Delete from the Begining");
 }
 return head ;
@@ -147,6 +148,11 @@ return head ;
 struct node * delete_end(struct node *head)
 {
 struct node *temp , *pre_node;
+
+if (head == NULL){
+printf("List is empty\n");
+return NULL;
+}
 
 if (head->next == NULL){
   free(head);
@@ -171,42 +177,72 @@ else{
 
 struct node *delete_given_loc(struct node*head)
 {
+    struct node *temp , *pre_node;
+    int pos, i=1;
 
-struct node *temp ,*pre_node;
-int pos, i=1;
+    if (head == NULL){
+        printf("List is empty\n");
+        return head;
+    }
 
+    printf("Enter the position to be Deleted: ");
+    scanf("%d",&pos);
 
-printf("Enter the position to be Deleted: ");
-scanf("%d",&pos);
-int lenght = count_length(head);
-if(lenght < pos){
-  printf("Invailed Position");
+    int length = count_length(head);
+    if (pos < 1 || pos > length){
+        printf("Invalid Position\n");
+        return head;
+    }
 
+    if (pos == 1){
+        temp = head;
+        head = head->next;
+        free(temp);
+        printf("Deleted first node\n");
+        return head;
+    }
+
+    temp = head;
+    while (i < pos){
+        pre_node = temp;
+        temp = temp->next;
+        i++;
+    }
+
+    pre_node->next = temp->next;
+    free(temp);
+    printf("Deleted position %d\n", pos);
+
+    return head;
 }
-else{
-   if(i == pos){
-    head=head->next;
-    printf("Deleted the Frist node");
-   }
-   else{
-    temp =head;
-    while(i<pos){
-      pre_node =temp;
-    temp = temp ->next;
-    i++;
-  }
-   pre_node->next =temp->next;
-   free(temp);
-   printf("Delete from the prosition %d",i);
 
+
+//  Reversal of the linked list 
+
+struct node *reversal( struct node *head){
+
+struct node *pre_node , *current_node , *next_node;
+pre_node =NULL;
+current_node  = next_node = head ;
+
+while(next_node !=NULL){
+ next_node =next_node->next;
+ current_node->next = pre_node;
+ pre_node = current_node;
+ current_node = next_node;
 }
 
+head = pre_node ;
+
+
+
+  return head;
 }
 
 
 
-  return  head ;
-}
+
+
 
 
 
@@ -216,29 +252,26 @@ else{
 
 // Dislay the Linked list
 
-struct node * display(struct node *head)
+void display(struct node *head)
 {
-struct node *search = head;
+    struct node *search = head;
 
-if (head == NULL) {
-printf("List is empty\n");
-return head;
+    if (head == NULL) {
+        printf("List is empty\n");
+        return;
+    }
+
+    while (search != NULL) {
+        printf("%d \t", search->data);
+        search = search->next;
+    }
+    printf("\n");
 }
-
-while (search != NULL) {
-printf("%d \t", search->data);
-search = search->next;
-}
-printf("\n");
-
-}
-
-
 
 
 int main(){
 
-struct node * head  , *temp;
+struct node * head;
 head = NULL ;
 
 while(1){
@@ -252,6 +285,7 @@ printf("\n6 for delete from given position");
 printf("\n7 for Dispaly");
 printf("\n8 for print the lenth of the linked list ");
 printf("\n9 for exit"  );
+printf("\n10 for revers the link list");
 
 printf("\n Enter your choice: ");
 scanf("%d",&choice);
@@ -292,6 +326,11 @@ break;
 
 case 9:
 exit(1);
+
+
+case 10 :
+ head = reversal(head);
+ break;
 }
 
 }
