@@ -7,6 +7,43 @@ struct node{
   struct node *pre;
   struct node *next;
 };
+//  Insert at the begining
+
+struct node *insert_begining(struct node *head){
+ struct node *tail , *newnode ;
+
+ newnode = (struct node*)malloc(sizeof(struct node));
+ printf("Enter the value: ");
+ scanf("%d" , &newnode->data);
+ newnode->pre = NULL;
+ newnode->next = NULL;
+
+ if (head == NULL)
+ { 
+   head = tail = newnode;
+ }
+ else{
+ 
+  newnode->next = head;
+  head -> pre = newnode ;
+  head = newnode;
+ }
+
+  return head;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 // Insert at the End 
@@ -89,7 +126,7 @@ scanf("%d",&choice);
 switch(choice){
 
 case 1:
-//  head = insert_begining(head);
+  head = insert_begining(head);
 break; 
 
 case 2 :
