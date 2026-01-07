@@ -113,18 +113,50 @@ if(tail==NULL){
     printf("list is empty");
     return ;
 }
-
+ temp = tail->next ;
 if (tail == tail->next){
-    free(tail);
     tail = NULL;
+    free(temp);
 }
 else{
-    temp = tail->next ;
+   
     temp= temp->next;
     free(tail->next);
     tail->next = temp;
 }
 printf("Deleted from begining");
+
+}
+// delete from end
+void delete_end(){
+struct node *temp , *pre_node;
+
+if(tail==NULL){
+    printf("List is empty");
+ return ;
+}
+pre_node = temp = tail->next;
+if(tail==tail->next){
+
+    free(temp);
+    tail =NULL;
+   
+
+}
+else{
+    while(temp->next != tail->next){
+        pre_node = temp;
+        temp = temp->next;
+    }
+    pre_node->next = tail->next;
+    free(temp);
+    tail= pre_node;
+}
+
+
+
+
+printf("Deleled from End");
 
 }
 
@@ -185,7 +217,7 @@ case 4:
 break;
 
 case 5:
-//  delete_end();
+ delete_end();
 break;
 case 6:
 // delete_given_loc(head);
