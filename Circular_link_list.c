@@ -10,14 +10,20 @@ struct node{
 struct node *tail = NULL;
 
 // count the length
-int count_length(struct node *tail ){
-struct node *temp;
-int count = 0;
-temp = tail->next ;
-while(temp->next!= tail->next ){
- temp = temp->next;
- count++;
-}}
+int count_length(){
+    if (tail == NULL)
+        return 0;
+
+    struct node *temp = tail->next;
+    int count = 1;
+
+    while (temp->next != tail->next){
+        temp = temp->next;
+        count++;
+    }
+    return count;
+}
+
 
 // insert at the begining
 
@@ -39,8 +45,6 @@ else{
 }
 
 }
-
-
 
 // insert at the End
 
@@ -65,6 +69,43 @@ else{
 }
 
 }
+
+// Insert at given loction
+void insert_given_loc(){
+ struct node *newnode , *temp ;
+ int pos , i=1;
+
+printf("Enter the position: ");
+scanf("%d",&pos);
+int len = count_length();
+
+if(pos <1 || pos >len+1){
+    printf("Invalid position ");
+}
+else{
+    if (pos ==1){
+        insert_begining();
+    }
+    else if(pos ==len+1){
+        insert_end();
+    }
+    else{
+
+        newnode = (struct node *)malloc(sizeof(struct node));
+        printf("Enter the value: ");
+        scanf("%d",&newnode->data);
+        temp = tail->next;
+        while(i <pos-1){
+            temp = temp->next;
+            i++;
+        }
+        newnode->next = temp->next;
+        temp->next = newnode;
+    }
+}
+
+}
+
 
 
 
@@ -127,7 +168,7 @@ insert_end();
 break;
 
 case 3:
-// insert_given_loc();
+insert_given_loc();
 break;
 
 case 4:
@@ -147,8 +188,8 @@ break;
 
 case 8:
 
-int len = count_length(tail);
-// printf("Length of the list is %d" , len);
+int len = count_length();
+printf("Length of the list is %d" , len);
 break;
 
 case 9:
