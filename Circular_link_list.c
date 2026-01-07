@@ -24,7 +24,6 @@ int count_length(){
     return count;
 }
 
-
 // insert at the begining
 
 void insert_begining(){
@@ -106,7 +105,28 @@ else{
 
 }
 
+// Delete from the begining 
 
+void delete_begining(){
+struct node *temp ;
+if(tail==NULL){
+    printf("list is empty");
+    return ;
+}
+
+if (tail == tail->next){
+    free(tail);
+    tail = NULL;
+}
+else{
+    temp = tail->next ;
+    temp= temp->next;
+    free(tail->next);
+    tail->next = temp;
+}
+printf("Deleted from begining");
+
+}
 
 
 
@@ -126,17 +146,6 @@ void display(){
     }
     printf("%d \t",temp->data);
 }
-
-
-
-
-
-
-
-
-
-
-
 
 
 int main(){
@@ -172,7 +181,7 @@ insert_given_loc();
 break;
 
 case 4:
-//  delete_begining();
+ delete_begining();
 break;
 
 case 5:
