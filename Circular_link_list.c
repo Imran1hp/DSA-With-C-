@@ -153,12 +153,57 @@ else{
     tail= pre_node;
 }
 
-
-
-
 printf("Deleled from End");
 
 }
+
+
+
+
+
+// delete from given location
+
+   void delete_given_loc(){
+
+    if(tail == NULL){
+        printf("List is empty");
+        return;
+    }
+
+    int pos, i = 1;
+    printf("Enter the position: ");
+    scanf("%d", &pos);
+
+    int len = count_length();
+
+    if(pos < 1 || pos > len){
+        printf("Invalid position");
+        return;
+    }
+
+    if(pos == 1){
+        delete_begining();
+    }
+    else if(pos == len){
+        delete_end();
+    }
+    else{
+        struct node *temp, *pre_node;
+        pre_node = tail->next;   // first node
+
+        while(i < pos - 1){
+            pre_node = pre_node->next;
+            i++;
+        }
+
+        temp = pre_node->next;   // node to delete
+        pre_node->next = temp->next;
+        free(temp);
+
+        printf("Deleted from position %d", pos);
+    }
+}
+
 
 
 
@@ -220,7 +265,7 @@ case 5:
  delete_end();
 break;
 case 6:
-// delete_given_loc(head);
+delete_given_loc();
 break;
 
 case 7:
