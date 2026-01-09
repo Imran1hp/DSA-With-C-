@@ -28,7 +28,7 @@ struct node * create(){
 }
 
 
-// Trees traversal preorder root left right
+// Trees traversal preorder (Root , left , Right)
 
 void preorder_traversal(struct node *root){
 
@@ -39,6 +39,44 @@ void preorder_traversal(struct node *root){
    preorder_traversal(root->left);
    preorder_traversal(root->right);
 }
+
+
+// trees traversal postorder (Left , Right , Root)
+
+void postorder_traversal(struct node *root){
+    if(root == NULL){
+        return ;
+
+    }
+    postorder_traversal(root->left);
+    postorder_traversal(root->right);
+    printf("%d \t",root->data);
+
+
+}
+
+
+//  Trees Inorder traversal  (left , Root , Right) 
+
+void inorder_traversal(struct node * root ){
+if( root == NULL){
+    return ;
+}
+
+inorder_traversal(root->left);
+printf("%d \t"  , root->data);
+inorder_traversal(root->right);
+
+}
+
+
+
+
+
+
+
+
+
 
 
 int main()
@@ -60,6 +98,14 @@ int choice ;
 
     case 1:
     preorder_traversal(root) ;
+    break;
+
+    case 2:
+    inorder_traversal(root);
+    break;
+
+    case 3:
+    postorder_traversal(root);
     break;
 
     case 4: exit(1);
