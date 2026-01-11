@@ -77,7 +77,5 @@ quick_sort(a , lb , ub);
 display(a);
 
 
-
-    return 0;
-
+  return 0;
 }
