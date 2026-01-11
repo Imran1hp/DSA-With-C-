@@ -71,14 +71,6 @@ inorder_traversal(root->right);
 
 
 
-
-
-
-
-
-
-
-
 int main()
 {
 
@@ -119,5 +111,8 @@ int choice ;
  return 0;
 
 }
+
+
+
 
 
