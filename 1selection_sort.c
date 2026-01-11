@@ -16,6 +16,7 @@ void selection_sort(int a[]){
         temp = a[i];
         a[i] =a[min];
         a[min] = temp;
+        
 
     }
   }
